@@ -1,30 +1,56 @@
 #imports
-
 from tkinter import *
 
-from PIL import Image
+# loading Python Imaging Library
+from PIL import ImageTk, Image
 
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
+# To get the dialog box to open when required
+from tkinter import filedialog
 
 def desktop_app():
     # Basic instantiation
+
+    def openfilename():
+        # open file dialog box to select image
+        # The dialogue box has a title "Open"
+        filename = filedialog.askopenfilename(title='"pen')
+        return filename
+
+    def open_img():
+        # Select the Imagename  from a folder
+        x = openfilename()
+
+        # opens the image
+        img = Image.open(x)
+
+        # resize the image and apply a high-quality down sampling filter
+        img = img.resize((450, 450), Image.ANTIALIAS)
+
+        # PhotoImage class is used to add image to widgets, icons etc
+        img = ImageTk.PhotoImage(img)
+
+        # create a label
+        panel = Label(window, image=img)
+
+        # set the image as img
+        panel.image = img
+        panel.grid(row=2)
 
     ##TKinter
     window = Tk()
     window.title("Image WaterMarking")
     window.minsize(width=800, height=800)
+    # Allow Window to be resizable
+    window.resizable(width=True, height=True)
     # Adding padding
     window.config(padx=40, pady=40)
 
-    ##Pillow
 
-    #Todo: We need to add two buttons on the bottom of the window
-    #We can use a stack layout image on top and two buttons on the bottom
-    #Todo:one button for adding the image - here we should use Pillow
-    #Todo:one button for applying the watermark
+
+    # Create a button and place it into the window using grid layout
+    upload_image_btn = Button(window, text='upload image', command=open_img).grid(
+        row=1, columnspan=4)
+
 
 
     window.mainloop()
