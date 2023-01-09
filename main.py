@@ -26,7 +26,7 @@ def desktop_app():
             out = Image.alpha_composite(base, txt)
 
             out.show()
-            out.save('filename_out.png')
+            out.save('C:/Users/Mogs91/Downloads/watermarked_pic.png')
 
     def openfilename():
         """it opens a file dialog box to select image,
