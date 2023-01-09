@@ -54,7 +54,7 @@ def desktop_app():
     window.resizable(width=True, height=True)
     window.config(padx=40, pady=40)
 
-    upload_image_btn = Button(text='upload image', command=open_img).grid(
+    upload_image_btn = Button(text='View image', command=open_img).grid(
         row=1, columnspan=4)
 
 #Todo: need to add the watermarking functionality
